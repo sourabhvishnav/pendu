@@ -36,16 +36,15 @@ function setup(){
   ball  = Bodies.circle(180,200,20,ball_options);
   World.add(world,ball);
 
-  chain = new Chain(ball.body,{x:200,y:10});
+  // console.log(ball);
+  chain = new Chain(ball,base);
 
 }
 
 function draw() {
   background(2);
+  Engine.update(engine);
 
- 
-
-   chain.display();
 
   fill ("brown");
 rectMode(CENTER);
@@ -60,14 +59,12 @@ fill("red");
 ellipseMode(RADIUS);
 ellipse(ball.position.x,ball.position.y,20);
 
-// strokeWeight(5);
-//   stroke("white");
-//   line(ball.position.x,ball.position.y,base.position.x,base.position.y)
-
   if(keyCode===32){
     ball.position.y = mouseY;
     ball.position.x = mouseX;
     }
+
+  chain.display();
 
   drawSprites();
 }
